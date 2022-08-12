@@ -58,12 +58,12 @@ util.parse = function(data)
           index = index,
           start = i,
           stop = i,
-          data = line:match("%s*%/[^\n\r]*") or line
+          data = line:gsub("%s*%/[^\n\r]*", "") or line
         })
         index = index + 1
       else
         acc[#acc].stop = i
-        acc[#acc].data = acc[#acc].data .. '\n' .. (line:match("%s*%/[^\n\r]*") or line)
+        acc[#acc].data = acc[#acc].data .. '\n' .. (line:gsub("%s*%/[^\n\r]*", "") or line)
       end
     end
     i = i + 1
