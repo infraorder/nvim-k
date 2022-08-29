@@ -183,7 +183,7 @@ M.send = function(data)
   local buffer_name = util.get_buffer_name()
   -- command = "` 0:`k@"
   command = ""
-  uv.write(M.buffers[buffer_name].client, command .. data .. "\n")
+  uv.write(M.buffers[buffer_name].client, command .. data)
 end
 
 M.ensure_repl_exists = function()
