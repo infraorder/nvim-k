@@ -50,7 +50,7 @@ util.parse = function(data)
   local i = 0;
   local index = 0;
   return table.reduce(data, function(acc, line, k)
-    if (not util.is_empty(util.trim(line:gsub("%s*%/[^\n\r]*", "") or line))) then
+    if (not util.is_empty(util.trim(line:gsub("%s*%s%/[^\n\r]*", "") or line))) then
       if (acc[#acc] == nil 
           or util.is_empty(acc[#acc].data) 
           or is_balanced(acc[#acc].data)) then
@@ -58,12 +58,12 @@ util.parse = function(data)
           index = index,
           start = i,
           stop = i,
-          data = line:gsub("%s*%/[^\n\r]*", "") or line
+          data = line:gsub("%s*%s%/[^\n\r]*", "") or line
         })
         index = index + 1
       else
         acc[#acc].stop = i
-        acc[#acc].data = acc[#acc].data .. '\n' .. (line:gsub("%s*%/[^\n\r]*", "") or line)
+        acc[#acc].data = acc[#acc].data .. '\n' .. (line:gsub("%s*%s%/[^\n\r]*", "") or line)
       end
     end
     i = i + 1

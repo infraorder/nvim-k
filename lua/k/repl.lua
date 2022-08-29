@@ -35,7 +35,7 @@ M.start_repl = function()
     line_cache      = {}
   }
 
-  vim.fn.jobstart({"bash", "-c", "socat TCP4-LISTEN:" .. M.buffers[buffer_name].port .. [[,reuseaddr,fork EXEC:""k,stderr""]]})
+  vim.fn.jobstart({"bash", "-c", "~/prg/nvim/nvim-k/server/k.py " .. M.buffers[buffer_name].port})
   vim.defer_fn(M.create_client, M.store.connect_timeout)
 end
 
