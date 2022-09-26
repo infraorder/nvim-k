@@ -15,3 +15,12 @@ fu!KIndent(l)
  endw
  retu len(t)?t[-1]:indent(p)
 endf
+
+nmap <buffer> <CR> <plug>(k_eval_line)
+xmap <buffer> <CR> <plug>(k_eval_range)
+nmap <buffer> <Leader>kf <plug>(k_eval_file)
+nmap <buffer> <Leader>kc <plug>(k_clear_after_line)
+nmap <buffer> <Leader>kC <plug>(k_clear_file)
+xmap <buffer> <Leader>kc <plug>(k_clear_range)
+xmap <buffer> <Leader>ks <plug>(start_repl)
+nmap <buffer> <Leader>kt <plug>(k_constant_eval)
